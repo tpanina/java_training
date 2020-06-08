@@ -1,2 +1,2 @@
-MyTestProject.java
- MyTestProject
+ru/stqa/pft/sandbox/MyFirstProgram.java
+ ru.stqa.pft.sandbox.MyFirstProgram
