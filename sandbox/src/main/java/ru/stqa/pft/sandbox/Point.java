@@ -10,4 +10,9 @@ public class Point {
         this.y=y;
         this.x=x;
     }
+
+    // добавляем метод в класс
+    public double distance() {
+        return Math.sqrt((this.x * this.x) + (this.y * this.y));
+    }
 }

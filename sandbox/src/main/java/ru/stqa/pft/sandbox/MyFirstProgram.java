@@ -14,7 +14,7 @@ public class MyFirstProgram {
         System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
 
         Point p = new Point(1,2);
-        System.out.println("Расстояние между двумя точками = " + distance(p));
+        System.out.println("Расстояние между двумя точками = " + p.distance());
     }
 
     public static void hello(String somebody) {
@@ -29,7 +29,4 @@ public class MyFirstProgram {
         return r.a * r.b;
     }
 
-    public static double distance(Point p) {
-        return Math.sqrt((p.x * p.x) + (p.y * p.y));
-    }
 } 
