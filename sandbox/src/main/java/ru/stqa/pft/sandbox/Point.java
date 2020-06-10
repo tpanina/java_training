@@ -2,17 +2,18 @@ package ru.stqa.pft.sandbox;
 
 public class Point {
 
-    int x; //координата оси X
-    int y; //координата оси Y
+    public double x, y; //координаты осей X и Y
 
-    // задаем параметры в конструкторе. Параметры равны координатам оси
-    Point(int x, int y) {
-        this.y=y;
-        this.x=x;
+    // задаем параметры Point в конструкторе. Параметры равны координатам оси
+
+    public Point (double x, double y) {
+        this.y = y;
+        this.x = x;
     }
 
-    // добавляем метод в класс
-    public double distance() {
-        return Math.sqrt((this.x * this.x) + (this.y * this.y));
+    // добавляем метод в класс, считает дистанцию между точками
+    public double distance(Point p1, Point p2) {
+        return Math.sqrt((p2.y - p1.y) * (p2.y - p1.y) + (p2.x - p1.x) * (p2.x - p1.x));
     }
 }
+
