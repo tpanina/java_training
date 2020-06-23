@@ -12,7 +12,10 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+<<<<<<< HEAD
 .idea/workspace.xml
 .idea/gradle.xml
 .idea
 ./sandbox/build
+=======
+>>>>>>> parent of 41ad096... Project for IDEA is created
