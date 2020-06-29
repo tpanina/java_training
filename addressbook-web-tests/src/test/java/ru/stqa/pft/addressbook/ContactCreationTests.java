@@ -11,64 +11,49 @@ import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.fail;
 
-public class GroupCreationTests {
+public class ContactCreationTests {
   private WebDriver driver;
+  private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @BeforeClass(alwaysRun = true)
   public void setUp() throws Exception {
     driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla FirefoxESR/firefox.exe"));
+    baseUrl = "http://localhost/addressbook/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    driver.get("http://localhost/addressbook/");
-    login("admin", "secret");
-  }
-
-  private void login(String username, String password) {
-    driver.findElement(By.name("user")).click();
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys(username);
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys(password);
-    driver.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @Test
-  public void testGroupCreation() throws Exception {
-    gotoGroupPage();
-    initGroupCreation();
-    fillGroupForm(new GroupData("Test Group4", "Test header", "Test footer"));
-    submitGroupCreation();
-    returnToGroupPage();
-  }
-
-  private void returnToGroupPage() {
-    driver.findElement(By.linkText("group page")).click();
-  }
-
-  private void submitGroupCreation() {
-    driver.findElement(By.name("submit")).click();
-  }
-
-  private void fillGroupForm(GroupData groupData) {
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-  }
-
-  private void initGroupCreation() {
-    driver.findElement(By.name("new")).click();
-  }
-
-  private void gotoGroupPage() {
-    driver.findElement(By.linkText("groups")).click();
+  public void tesContactCreation() throws Exception {
+    driver.get("http://localhost/addressbook/edit.php");
+    driver.findElement(By.name("user")).clear();
+    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.id("LoginForm")).click();
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.name("pass")).clear();
+    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.id("LoginForm")).click();
+    driver.findElement(By.xpath("//input[@value='Login']")).click();
+    driver.findElement(By.linkText("add new")).click();
+    driver.findElement(By.name("firstname")).click();
+    driver.findElement(By.name("firstname")).clear();
+    driver.findElement(By.name("firstname")).sendKeys("Test name");
+    driver.findElement(By.name("theform")).click();
+    driver.findElement(By.name("lastname")).click();
+    driver.findElement(By.name("lastname")).clear();
+    driver.findElement(By.name("lastname")).sendKeys("Test surname");
+    driver.findElement(By.name("address")).click();
+    driver.findElement(By.name("address")).clear();
+    driver.findElement(By.name("address")).sendKeys("Test address");
+    driver.findElement(By.name("home")).click();
+    driver.findElement(By.name("home")).clear();
+    driver.findElement(By.name("home")).sendKeys("123456789");
+    driver.findElement(By.name("email")).click();
+    driver.findElement(By.name("email")).clear();
+    driver.findElement(By.name("email")).sendKeys("test@email.ru");
+    driver.findElement(By.xpath("(//input[@name='submit'])[2]")).click();
+    driver.findElement(By.linkText("home page")).click();
   }
 
   @AfterClass(alwaysRun = true)
