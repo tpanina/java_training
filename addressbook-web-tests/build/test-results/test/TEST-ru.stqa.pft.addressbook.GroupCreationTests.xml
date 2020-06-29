@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-25T07:38:49" hostname="WIN-3RIAOVD4NCL" time="3.233">
+<testsuite name="ru.stqa.pft.addressbook.GroupCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-29T03:24:45" hostname="WIN-3RIAOVD4NCL" time="5.794">
   <properties/>
-  <testcase name="testGroupCreation" classname="ru.stqa.pft.addressbook.GroupCreationTests" time="3.233"/>
+  <testcase name="testGroupCreation" classname="ru.stqa.pft.addressbook.GroupCreationTests" time="5.794"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[июн 25, 2020 1:38:41 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+  <system-err><![CDATA[июн 29, 2020 9:24:03 AM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: OSS
 ]]></system-err>
 </testsuite>
