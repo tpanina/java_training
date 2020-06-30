@@ -10,6 +10,8 @@ ru/stqa/pft/addressbook/tests/TestBase.java
  ru.stqa.pft.addressbook.tests.TestBase
 ru/stqa/pft/addressbook/appmanager/ContactHelper.java
  ru.stqa.pft.addressbook.appmanager.ContactHelper
+ru/stqa/pft/addressbook/appmanager/HelperBase.java
+ ru.stqa.pft.addressbook.appmanager.HelperBase
 ru/stqa/pft/addressbook/tests/GroupDeletionTests.java
  ru.stqa.pft.addressbook.tests.GroupDeletionTests
 ru/stqa/pft/addressbook/appmanager/NavigationHelper.java
