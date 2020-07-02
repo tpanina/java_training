@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.tests.ContactCreationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-30T09:27:57" hostname="WIN-3RIAOVD4NCL" time="2.569">
-  <properties/>
-  <testcase name="testContactCreation" classname="ru.stqa.pft.addressbook.tests.ContactCreationTests" time="2.569"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[июн 30, 2020 3:27:52 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: OSS
-]]></system-err>
-</testsuite>
