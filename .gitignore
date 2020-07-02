@@ -17,5 +17,7 @@ gradle-app.setting
 .idea/gradle.xml
 .idea
 sandbox/build
+addressbook-web-tests/build
+addressbook-web-tests/.gradle
 =======
 >>>>>>> parent of 41ad096... Project for IDEA is created
