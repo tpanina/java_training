@@ -40,4 +40,8 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//input[@value='Delete']"));
         driver.switchTo().alert().accept();
     }
+
+    public int getContactCount() {
+        return driver.findElements(By.name("selected[]")).size();
+    }
 }
