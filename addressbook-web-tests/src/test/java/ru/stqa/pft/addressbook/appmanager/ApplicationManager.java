@@ -41,7 +41,7 @@ public class ApplicationManager {
         sessionHelper.login("admin", "secret");
     }
 
-    private boolean isAlertPresent(FirefoxDriver driver) {
+    private boolean isAlertPresent(WebDriver driver) {
         try {
             driver.switchTo().alert();
             return true;
