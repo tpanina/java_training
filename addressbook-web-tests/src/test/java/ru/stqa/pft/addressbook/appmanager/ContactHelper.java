@@ -30,7 +30,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void editContactForm() {
-        click(By.xpath("(//img[@alt='Edit'])[2]"));
+        click(By.xpath("(//img[@alt='Edit'])"));
     }
     public void updateContactForm() {
         click(By.xpath("(//input[@name='update'])[2]"));
@@ -48,5 +48,26 @@ public class ContactHelper extends HelperBase {
 
     public int getContactCount() {
         return driver.findElements(By.name("selected[]")).size();
+    }
+
+    public void returnToHomePageWithContacts() {
+
+        click(By.linkText("home page"));
+    }
+
+    public void gotoAddContactPage() {
+
+        click(By.linkText("add new"));
+    }
+
+    public void createContact(ContactData contact) {
+        gotoAddContactPage();
+        fillContactForm(contact);
+        submitContactForm();
+        returnToHomePageWithContacts();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 }

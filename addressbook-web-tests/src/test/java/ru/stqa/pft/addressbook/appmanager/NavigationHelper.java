@@ -25,14 +25,4 @@ public class NavigationHelper extends HelperBase {
         }
         click(By.linkText("home"));
     }
-
-    public void returnToHomePage() {
-
-        click(By.linkText("home page"));
-    }
-
-    public void gotoAddContactPage() {
-
-        click(By.linkText("add new"));
-    }
 }

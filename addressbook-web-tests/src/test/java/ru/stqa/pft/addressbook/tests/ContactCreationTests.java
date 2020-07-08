@@ -10,10 +10,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() throws Exception {
     app.getNavigationHelper().gotoHomePage();
     int before = app.getContactHelper().getContactCount();
-    app.getNavigationHelper().gotoAddContactPage();
-    app.getContactHelper().fillContactForm(new ContactData("Test name1", "Test surname", "Test address", "123456789", "test@email.ru", "Test Group"));
-    app.getContactHelper().submitContactForm();
-    app.getNavigationHelper().returnToHomePage();
+    app.getContactHelper().createContact(new ContactData("Test name1", "Test surname", "Test address", "123456789", "test@email.ru", "Test Group"));
     int after = app.getContactHelper().getContactCount();
     Assert.assertEquals(after, before + 1);
   }
