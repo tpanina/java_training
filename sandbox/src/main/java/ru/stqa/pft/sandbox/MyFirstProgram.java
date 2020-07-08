@@ -14,8 +14,8 @@ public class MyFirstProgram {
         System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + area(r));
 
         //функция
-        Point p1 = new Point(1,2);
-        Point p2 = new Point(2,3);
+        Point p1 = new Point(1,- 1);
+        Point p2 = new Point(- 2,4);
         System.out.println("Расстояние между точкой p1 с координатами x = " + p1.x + " и y = " + p1.y + " и точкой p2 с координатами x = " + p2.x + " и y = " + p2.y + " равно " + distance(p1,p2));
 
         //метод
