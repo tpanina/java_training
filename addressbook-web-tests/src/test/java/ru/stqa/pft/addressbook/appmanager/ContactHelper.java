@@ -24,7 +24,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"), contactData.getHomephone());
         type(By.name("email"), contactData.getEmail());
 
-        if (isElementPresent(By.name("new_group"))){
+        if (isElementPresent(By.name("new_group"))) {
             new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
         }
     }
@@ -32,6 +32,7 @@ public class ContactHelper extends HelperBase {
     public void editContactForm() {
         click(By.xpath("(//img[@alt='Edit'])"));
     }
+
     public void updateContactForm() {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
