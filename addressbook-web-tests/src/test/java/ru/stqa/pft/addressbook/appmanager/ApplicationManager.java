@@ -25,11 +25,11 @@ public class ApplicationManager {
     }
 
     public void init() {
-        if (browser == BrowserType.FIREFOX) {
+        if (browser.equals(BrowserType.FIREFOX)) {
             driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla FirefoxESR/firefox.exe"));
-        } else if (browser == BrowserType.CHROME) {
+        } else if (browser.equals(BrowserType.CHROME)) {
             driver = new ChromeDriver();
-        } else if (browser == BrowserType.IE) {
+        } else if (browser.equals(BrowserType.IE)) {
             driver = new InternetExplorerDriver();
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
