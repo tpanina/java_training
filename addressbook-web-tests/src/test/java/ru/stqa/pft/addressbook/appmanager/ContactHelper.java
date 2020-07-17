@@ -43,6 +43,13 @@ public class ContactHelper extends HelperBase {
         returnToHomePageWithContacts();
     }
 
+    public void modifyContact(ContactData contact) {
+        editContactForm();
+        fillContactForm(contact, false);
+        updateContactForm();
+        returnToHomePageWithContacts();
+    }
+
     public void editContactForm() {
         click(By.xpath("(//img[@alt='Edit'])"));
     }
