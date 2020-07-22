@@ -26,7 +26,9 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("address"), contactData.getAddress());
-        type(By.name("home"), contactData.getHomephone());
+        type(By.name("home"), contactData.getHomePhone());
+        type(By.name("mobile"), contactData.getMobilePhone());
+        type(By.name("work"), contactData.getWorkPhone());
         type(By.name("email"), contactData.getEmail());
 
         if (creation) {
@@ -40,6 +42,7 @@ public class ContactHelper extends HelperBase {
         gotoAddContactPage();
         fillContactForm(contact, true);
         submitContactForm();
+        contactCache = null;
         returnToHomePageWithContacts();
     }
 
@@ -47,12 +50,14 @@ public class ContactHelper extends HelperBase {
         editContactFormByID(contact.getId());
         fillContactForm(contact, false);
         updateContactForm();
+        contactCache = null;
         returnToHomePageWithContacts();
     }
 
     public void delete(ContactData contact) {
         selectContactById(contact.getId());
         deleteContact();
+        contactCache = null;
     }
 
     public void editContactFormByID(int id) {
@@ -76,7 +81,7 @@ public class ContactHelper extends HelperBase {
         driver.switchTo().alert().accept();
     }
 
-    public int getContactCount() {
+    public int count() {
         return driver.findElements(By.name("selected[]")).size();
     }
 
@@ -90,20 +95,39 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
+    public ContactData infoFromEditForm(ContactData contact) {
+        editContactFormByID(contact.getId());
+        String firstname = driver.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = driver.findElement(By.name("lastname")).getAttribute("value");
+        String home = driver.findElement(By.name("home")).getAttribute("value");
+        String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
+        String work = driver.findElement(By.name("work")).getAttribute("value");
+        driver.navigate().back();
+        return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
 
+    private Contacts contactCache = null;
+
     public Contacts all() {
-        Contacts contacts = new Contacts();
-        List<WebElement> elements = driver.findElements(By.name("entry"));
-        for (WebElement element : elements) {
-            String firstname = element.findElement(By.xpath("td[3]")).getText();
-            String lastname = element.findElement(By.xpath("td[2]")).getText();
-            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname);
-            contacts.add(contact);
+        if(contactCache != null) {
+            return new Contacts(contactCache);
         }
-        return contacts;
+        contactCache = new Contacts();
+        List<WebElement> rows = driver.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            String firstname = cells.get(2).getText();
+            String lastname = cells.get(1).getText();
+            String[] phones = cells.get(5).getText().split("\n");
+            int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+                    .withHomePhone(phones[0]).withMobilePhone(phones[1]).withWorkPhone(phones[2]);
+            contactCache.add(contact);
+        }
+        return new Contacts(contactCache);
     }
 }
