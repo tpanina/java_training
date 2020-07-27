@@ -10,6 +10,7 @@ dependencies {
     implementation 'com.kenai.nbpwr:org-slf4j-jdk14:1.6.1-201106101300'
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.beust:jcommander:1.78'
+    implementation 'com.thoughtworks.xstream:xstream:1.4.12'
 }
 
 test {
