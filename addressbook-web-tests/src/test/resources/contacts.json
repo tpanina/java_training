@@ -1,0 +1,26 @@
+[
+  {
+    "firstname": "Firstname 0",
+    "lastname": "Lastname 0",
+    "address": "Address 0",
+    "homePhone": "7874584940",
+    "mobilePhone": "44556670",
+    "workPhone": "11222244440",
+    "email": "email0@test.com",
+    "email2": "email21@test.com",
+    "email3": "email32@test.com",
+    "group": "[none]"
+  },
+  {
+    "firstname": "Firstname 1",
+    "lastname": "Lastname 1",
+    "address": "Address 1",
+    "homePhone": "7874584941",
+    "mobilePhone": "44556671",
+    "workPhone": "11222244441",
+    "email": "email1@test.com",
+    "email2": "email22@test.com",
+    "email3": "email33@test.com",
+    "group": "[none]"
+  }
+]
