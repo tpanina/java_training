@@ -7,13 +7,33 @@ repositories {
 dependencies {
     implementation 'org.testng:testng:7.1.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-6'
-    implementation 'com.kenai.nbpwr:org-slf4j-jdk14:1.6.1-201106101300'
     implementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.beust:jcommander:1.78'
     implementation 'com.thoughtworks.xstream:xstream:1.4.12'
     implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
-test {
-    useTestNG()
+task testGroups(type:Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-groups.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
+}
+
+task testContacts(type:Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+    if (project.hasProperty('browser')) {
+        systemProperty 'browser', "${browser}"
+    }
+    if (project.hasProperty('target')) {
+        systemProperty 'target', "${target}"
+    }
 }

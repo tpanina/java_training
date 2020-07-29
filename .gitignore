@@ -20,3 +20,4 @@ addressbook-web-tests/build
 addressbook-web-tests/.gradle
 sandbox/out
 
+*.log
