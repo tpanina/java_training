@@ -24,6 +24,7 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    private DbHelper dbHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -34,6 +35,7 @@ public class ApplicationManager {
         String target = System.getProperty("target", "local");
         properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
+        dbHelper = new DbHelper();
         if (browser.equals(BrowserType.FIREFOX)) {
             driver = new FirefoxDriver(new FirefoxOptions().setLegacy(true).setBinary("C:/Program Files/Mozilla FirefoxESR/firefox.exe"));
         } else if (browser.equals(BrowserType.CHROME)) {
@@ -76,5 +78,9 @@ public class ApplicationManager {
     }
     public ContactHelper contact() {
         return contactHelper;
+    }
+
+    public DbHelper db() {
+        return dbHelper;
     }
 }
