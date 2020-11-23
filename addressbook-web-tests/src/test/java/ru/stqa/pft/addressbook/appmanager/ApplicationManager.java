@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -50,19 +49,6 @@ public class ApplicationManager {
         sessionHelper = new SessionHelper(driver);
         contactHelper = new ContactHelper(driver);
         sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
-    }
-
-    private boolean isAlertPresent(WebDriver driver) {
-        try {
-            driver.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
-
-    public boolean isAcceptNextAlert() {
-        return acceptNextAlert;
     }
 
     public void stop() {

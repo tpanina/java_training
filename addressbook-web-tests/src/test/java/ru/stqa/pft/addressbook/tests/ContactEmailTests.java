@@ -17,7 +17,7 @@ public class ContactEmailTests extends TestBase {
         if (app.db().contacts().size() == 0) {
             app.goTo().HomePage();
             app.contact().create(new ContactData().withFirstname("Test name").withLastname("Test surname").withAddress("Test address").withHomePhone("123456789")
-                    .withEmail("test@email.ru").withEmail2("email2@test.ru").withEmail3("email3@test.ru").withGroup("Test Group"));
+                    .withEmail("test@email.ru").withEmail2("email2@test.ru").withEmail3("email3@test.ru"));
         }
     }
 
@@ -38,6 +38,6 @@ public class ContactEmailTests extends TestBase {
     }
 
     public static String cleaned(String email) {
-        return email.replaceAll("\\s", "").replaceAll("[-()]", "");
+        return email.replaceAll("\\s", "").replaceAll("[-()]", "").replaceAll("00", "+");
     }
 }

@@ -35,7 +35,10 @@ public class ContactHelper extends HelperBase {
         // attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
-            new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+            if (contactData.getGroups().size() > 0) {
+                Assert.assertTrue(contactData.getGroups().size() == 1);
+                new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
@@ -71,17 +74,13 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
 
-    public void selectContact(int index) {
-        driver.findElements(By.name("selected[]")).get(index).click();
-    }
-
     public void selectContactById(int id) {
-        driver.findElement(By.cssSelector("input[value='" + id + "']")).click();
+        driver.findElement(By.cssSelector("input[id='" + id + "']")).click();
     }
 
     public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
-        driver.switchTo().alert().accept();
+        isAlertPresent(driver);
     }
 
     public int count() {
@@ -116,10 +115,6 @@ public class ContactHelper extends HelperBase {
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
     }
 
-    public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
     private Contacts contactCache = null;
 
     public Contacts all() {
@@ -142,5 +137,26 @@ public class ContactHelper extends HelperBase {
             contactCache.add(contact);
         }
         return new Contacts(contactCache);
+    }
+
+    public void addContactToGroup(ContactData contact, int groupID) {
+        selectContactById(contact.getId());
+        driver.findElement(By.name("to_group")).click();
+        new Select(driver.findElement(By.name("to_group"))).selectByValue(String.valueOf(groupID));
+        driver.findElement(By.xpath("(//option[@value='" + groupID + "'])[2]")).click();
+        click(By.xpath("//input[@value='Add to']"));
+        driver.findElement(By.partialLinkText("group page")).click();
+        contactCache = null;
+    }
+
+    public void removeContactFromGroup(ContactData contact, int groupID) {
+        driver.findElement(By.name("group")).click();
+        new Select(driver.findElement(By.name("group"))).selectByValue(String.valueOf(groupID));
+        driver.findElement(By.xpath("(//option[@value=" + groupID + "])[2]")).click();
+        selectContactById(contact.getId());
+        driver.findElement(By.name("remove")).click();
+        driver.findElement(By.partialLinkText("group page")).click();
+        new Select(driver.findElement(By.name("group"))).selectByVisibleText("[all]");
+        contactCache = null;
     }
 }

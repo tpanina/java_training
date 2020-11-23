@@ -52,10 +52,6 @@ public class GroupHelper extends HelperBase {
         return driver.findElements(By.name("selected[]")).size();
     }
 
-    public boolean isThereAGroup() {
-        return isElementPresent(By.name("selected[]"));
-    }
-
     public void create(GroupData group) {
         initGroupCreation();
         fillGroupForm(group);

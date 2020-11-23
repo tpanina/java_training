@@ -1,8 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.io.File;
 
@@ -29,6 +27,15 @@ public class HelperBase {
                 driver.findElement(locator).sendKeys(file.getAbsolutePath());
             }
         }
+
+    protected void isAlertPresent(WebDriver driver) {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        } catch (NoAlertPresentException e) {
+            return;
+        }
+    }
 
     protected void click(By locator) {
         driver.findElement(locator).click();

@@ -38,7 +38,7 @@ public class GroupCreationTests extends TestBase {
   }
 
   @Test(dataProvider = "validGroups")
-  public void testGroupCreation(GroupData group) throws Exception {
+  public void testGroupCreation(GroupData group) {
     app.goTo().groupPage();
     Groups before = app.db().groups();
     app.group().create(group);
@@ -50,7 +50,7 @@ public class GroupCreationTests extends TestBase {
   }
 
   @Test(enabled = false)
-  public void testBadGroupCreation() throws Exception {
+  public void testBadGroupCreation() {
     app.goTo().groupPage();
     Groups before = app.group().all();
     GroupData group = new GroupData().withName("Test Group'");
