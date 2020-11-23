@@ -83,10 +83,6 @@ public class ContactHelper extends HelperBase {
         isAlertPresent(driver);
     }
 
-    public int count() {
-        return driver.findElements(By.name("selected[]")).size();
-    }
-
     public void returnToHomePageWithContacts() {
 
         click(By.linkText("home page"));

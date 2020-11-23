@@ -38,6 +38,6 @@ public class ContactEmailTests extends TestBase {
     }
 
     public static String cleaned(String email) {
-        return email.replaceAll("\\s", "").replaceAll("[-()]", "").replaceAll("00", "+");
+        return email.replaceAll("\\s", "");
     }
 }
