@@ -21,3 +21,4 @@ addressbook-web-tests/.gradle
 sandbox/out
 
 *.log
+.idea/misc.xml
