@@ -14,11 +14,13 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
 .idea/gradle.xml
-.idea
+.idea/
 sandbox/build
 addressbook-web-tests/build
 addressbook-web-tests/.gradle
 sandbox/out
+mantis-tests/build/
 
 *.log
 .idea/misc.xml
+
