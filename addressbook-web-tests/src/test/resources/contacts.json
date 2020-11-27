@@ -1,26 +1,30 @@
 [
   {
-    "firstname": "Firstname 0",
-    "lastname": "Lastname 0",
-    "address": "Address 0",
-    "homePhone": "7874584940",
-    "mobilePhone": "44556670",
-    "workPhone": "11222244440",
+    "firstname": "Firstname 5",
+    "lastname": "Lastname 5",
+    "address": "Address 2",
+    "homePhone": "7874584942",
+    "mobilePhone": "44556672",
+    "workPhone": "11222244442",
     "email": "email0@test.com",
     "email2": "email21@test.com",
     "email3": "email32@test.com",
-    "group": "[none]"
+    "group": "[none]",
+    "photo": "src/test/resources/ava.jpg"
   },
-  {
-    "firstname": "Firstname 1",
-    "lastname": "Lastname 1",
-    "address": "Address 1",
+
+
+  { "firstname": "Firstname 3",
+    "lastname": "Lastname 3",
+    "address": "Address 3",
     "homePhone": "7874584941",
     "mobilePhone": "44556671",
     "workPhone": "11222244441",
     "email": "email1@test.com",
     "email2": "email22@test.com",
     "email3": "email33@test.com",
-    "group": "[none]"
+    "group": "[none]",
+    "photo": "src/test/resources/ava.jpg"
   }
+
 ]

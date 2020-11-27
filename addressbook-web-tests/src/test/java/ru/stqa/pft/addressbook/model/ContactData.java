@@ -45,6 +45,11 @@ public class ContactData {
     @Type(type = "text")
     private String workPhone;
 
+    @Expose
+    @Column(name = "fax")
+    @Type(type = "text")
+    private String faxPhone;
+
     @Transient
     private String allPhones;
 
@@ -117,6 +122,11 @@ public class ContactData {
 
     public ContactData withWorkPhone(String workPhone) {
         this.workPhone = workPhone;
+        return this;
+    }
+
+    public ContactData withFaxPhone(String faxPhone) {
+        this.faxPhone = faxPhone;
         return this;
     }
 

@@ -32,7 +32,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email"), contactData.getEmail());
         type(By.name("email2"), contactData.getEmail2());
         type(By.name("email3"), contactData.getEmail3());
-        // attach(By.name("photo"), contactData.getPhoto());
+        attach(By.name("photo"), contactData.getPhoto());
 
         if (creation) {
             if (contactData.getGroups().size() > 0) {
@@ -100,13 +100,14 @@ public class ContactHelper extends HelperBase {
         String home = driver.findElement(By.name("home")).getAttribute("value");
         String mobile = driver.findElement(By.name("mobile")).getAttribute("value");
         String work = driver.findElement(By.name("work")).getAttribute("value");
+        String fax = driver.findElement(By.name("fax")).getAttribute("value");
         String address = driver.findElement(By.name("address")).getAttribute("value");
         String email = driver.findElement(By.name("email")).getAttribute("value");
         String email2 = driver.findElement(By.name("email2")).getAttribute("value");
         String email3 = driver.findElement(By.name("email3")).getAttribute("value");
         driver.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-                .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
+                .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work).withFaxPhone(fax)
                 .withAddress(address)
                 .withEmail(email).withEmail2(email2).withEmail3(email3);
     }
