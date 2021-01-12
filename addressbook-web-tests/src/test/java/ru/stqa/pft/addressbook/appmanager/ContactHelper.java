@@ -71,7 +71,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void updateContactForm() {
-        click(By.xpath("(//input[@name='update'])[2]"));
+        click(By.xpath("//input[@value='Update']"));
     }
 
     public void selectContactById(int id) {
