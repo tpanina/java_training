@@ -97,3 +97,4 @@ public class CalcTest {
         } else throw new IllegalArgumentException("На ноль делить нельзя!");
     }
 }
+
