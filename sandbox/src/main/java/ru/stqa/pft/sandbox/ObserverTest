@@ -1,0 +1,139 @@
+package sandbox.src.main.java.ru.stqa.pft.sandbox;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ObserverTest {
+
+    public interface Observer {
+        void update(String operationType, String result);
+    }
+
+    // сделала класс с имплементацией метода Observer'а как было нарисовало на схеме в занятии,
+    // но в итоге вынесла эту логику в классы Subscriber'ов, чтобы выводить дополнительные данные из этих классов
+    // так показалось красивее и читабельнее :)
+//    public static class ConcreteObserver implements Observer {
+//        @Override
+//        public void update(String subject, String operationType, String result) {
+//            System.out.println(" ");
+//            System.out.println("Тип операции: " + operationType);
+//            System.out.println("Итоговая строка: " + result);
+//        }
+//    }
+
+    public interface Subject {
+        void addObserver(Observer observer);
+
+        void removeObserver(Observer observer);
+
+        void notifyAllObservers();
+    }
+
+    static class ObservableStringBuilder implements Subject {
+
+        private String operationType;
+        private final StringBuilder stringBuilder;
+        private final List<Observer> observers;
+
+        public ObservableStringBuilder() {
+            this.stringBuilder = new StringBuilder();
+            this.observers = new ArrayList<>();
+        }
+
+        @Override
+        public void addObserver(Observer observer) {
+            System.out.println("Регистрируем подписчика: " + observer.getClass());
+            observers.add(observer);
+        }
+
+        @Override
+        public void removeObserver(Observer observer) {
+            System.out.println("Удаляем подписчика: " + observer.getClass());
+            observers.remove(observer);
+        }
+
+        @Override
+        public void notifyAllObservers() {
+            for (Observer observer : observers) {
+                observer.update(operationType, stringBuilder.toString());
+            }
+        }
+
+        public void append(String str) {
+            stringBuilder.append(str);
+            this.operationType = "append";
+            notifyAllObservers();
+        }
+
+        public void insert(int index, String str) {
+            stringBuilder.insert(index, str);
+            this.operationType = "insert";
+            notifyAllObservers();
+        }
+
+        public void clear() {
+            stringBuilder.setLength(0);
+            this.operationType = "clear";
+            notifyAllObservers();
+        }
+    }
+
+    public static class NewsSubscriber implements Observer {
+        private final String newsFeedTitle;
+
+        public NewsSubscriber(String newsFeedTitle) {
+            this.newsFeedTitle = newsFeedTitle;
+        }
+
+        @Override
+        public void update(String operationType, String result) {
+            System.out.println(" ");
+            System.out.println("Подписка на новостную ленту: " + newsFeedTitle);
+            System.out.println("Тип операции: " + operationType);
+            System.out.println("Итоговая строка: " + result);
+        }
+    }
+
+    public static class SmsSubscriber implements Observer {
+        private final String phoneNumber;
+
+        public SmsSubscriber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        @Override
+        public void update(String operationType, String result) {
+            System.out.println(" ");
+            System.out.println("Sms-подписка на номер: " + phoneNumber);
+            System.out.println("Тип операции: " + operationType);
+            System.out.println("Итоговая строка: " + result);
+        }
+    }
+
+    public static class Main {
+        public static void main(String[] args) {
+            ObservableStringBuilder stringBuilder = new ObservableStringBuilder();
+
+            // создаем подписки
+            Observer subscriber1 = new NewsSubscriber("Спорт");
+            Observer subscriber2 = new SmsSubscriber("+79990000001");
+
+            // регистрируем подписки
+            stringBuilder.addObserver(subscriber1);
+            stringBuilder.addObserver(subscriber2);
+
+            // добавляем строку
+            stringBuilder.append("Hello, world!");
+
+            // изменяем строку
+            stringBuilder.insert(7, "wonderful ");
+
+            // очищаем строку
+            stringBuilder.clear();
+
+            // удаляем подписки
+            stringBuilder.removeObserver(subscriber1);
+            stringBuilder.removeObserver(subscriber2);
+        }
+    }
+}
