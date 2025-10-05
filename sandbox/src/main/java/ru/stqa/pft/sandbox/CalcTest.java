@@ -1,4 +1,4 @@
-package ru.greenatom.atomcore.organization_attribute_groups.steps;
+package sandbox.src.main.java.ru.stqa.pft.sandbox.CalcTest;
 
 import java.util.Scanner;
 
@@ -97,4 +97,5 @@ public class CalcTest {
         } else throw new IllegalArgumentException("На ноль делить нельзя!");
     }
 }
+
 
