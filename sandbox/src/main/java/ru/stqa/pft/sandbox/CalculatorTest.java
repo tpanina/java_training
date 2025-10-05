@@ -1,4 +1,4 @@
-package ru.greenatom.atomcore.organization_attribute_groups.steps;
+package sandbox.src.main.java.ru.stqa.pft.sandbox;
 
 import java.util.Scanner;
 
@@ -129,3 +129,4 @@ public class CalculatorTest {
         } else throw new IllegalArgumentException("Вы не ввели операцию для выполнения");
     }
 }
+
