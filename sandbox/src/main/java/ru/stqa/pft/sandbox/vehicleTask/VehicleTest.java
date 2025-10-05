@@ -1,7 +1,7 @@
-package ru.greenatom.atomcore.organization_attribute_groups.steps;
+package sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask;
 
-import static ru.greenatom.atomcore.organization_attribute_groups.steps.VehicleTest.EngineType.*;
-import static ru.greenatom.atomcore.organization_attribute_groups.steps.VehicleTest.FuelType.*;
+import static sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask.VehicleTest.EngineType.*;
+import static sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask.VehicleTest.FuelType.*;
 
 public class VehicleTest {
 
@@ -197,3 +197,4 @@ public class VehicleTest {
         }
     }
 }
+
