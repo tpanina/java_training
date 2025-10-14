@@ -1,7 +1,7 @@
-package sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask;
+package ru.stqa.pft.sandbox.vehicleTask;
 
-import static sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask.VehicleTest.EngineType.*;
-import static sandbox.src.main.java.ru.stqa.pft.sandbox.vehicleTask.VehicleTest.FuelType.*;
+import static ru.stqa.pft.sandbox.vehicleTask.VehicleTest.EngineType.*;
+import static ru.stqa.pft.sandbox.vehicleTask.VehicleTest.FuelType.*;
 
 public class VehicleTest {
 
