@@ -20,10 +20,14 @@ public class CalcTest {
             if (input.equalsIgnoreCase("exit")) {
                 break;
             }
+            try {
             int number1 = getNumber(sc);
             int number2 = getNumber(sc);
             char scanOperationType = scanOperationType(sc);
             calculateOperation(number1, number2, scanOperationType);
+            } catch (Exception e) {
+                System.out.println("Произошла непредвиденная ошибка: " + e.getMessage());
+            }
             System.out.println("Хотите выйти?");
         }
         System.out.println("Выход из программы");

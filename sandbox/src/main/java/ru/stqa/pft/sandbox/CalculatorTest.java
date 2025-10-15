@@ -4,37 +4,37 @@ import java.util.Scanner;
 
 public class CalculatorTest {
 
-    public static class Calculator {
+    public static void main(String[] args) {
+        CalculatorTest calculator = new CalculatorTest();
+        calculator.calculateOperation();
+    }
 
-        public static void main(String[] args) {
-            Calculator calculator = new Calculator();
-            calculator.calculateOperation();
-        }
-
-        public void calculateOperation() {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Простой калькулятор. Введите сначала первое число, потом второе, а затем операцию в формате (+, -, *, /)");
-            while(true) {
-                System.out.println("Для выхода из программы напишите exit, для продолжения работы программы - любой символ");
-                String input = sc.next();
-                if (input.equalsIgnoreCase("exit")) {
-                    break;
-                }
+    public void calculateOperation() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Простой калькулятор. Введите сначала первое число, потом второе, а затем операцию в формате (+, -, *, /)");
+        while (true) {
+            System.out.println("Для выхода из программы напишите exit, для продолжения работы программы - любой символ");
+            String input = sc.next();
+            if (input.equalsIgnoreCase("exit")) {
+                break;
+            }
+            try {
                 int number1 = getNumber(sc);
                 int number2 = getNumber(sc);
                 char operationType = scanOperationType(sc);
                 Operation operation = getOperation(number1, number2, operationType);
-                assert operation != null;
                 int result = operation.calculate();
                 System.out.println("Результат = " + result);
-                System.out.println("Хотите выйти?");
+            } catch (Exception e) {
+                System.out.println("Произошла непредвиденная ошибка: " + e.getMessage());
             }
-            System.out.println("Выход из программы");
-            sc.close();
+            System.out.println("Хотите продолжить?");
         }
+        System.out.println("Выход из программы");
+        sc.close();
     }
 
-    public static Operation getOperation(int number1, int number2, char operationType) {
+    public Operation getOperation(int number1, int number2, char operationType) {
         return switch (operationType) {
             case '+' -> new Sum(number1, number2);
             case '-' -> new Subtract(number1, number2);
@@ -44,7 +44,7 @@ public class CalculatorTest {
         };
     }
 
-    public abstract static class Operation {
+    public abstract class Operation {
         protected int number1, number2;
 
         protected Operation(int number1, int number2) {
@@ -55,7 +55,7 @@ public class CalculatorTest {
         public abstract int calculate();
     }
 
-    public static class Sum extends Operation {
+    public class Sum extends Operation {
         protected Sum(int number1, int number2) {
             super(number1, number2);
         }
@@ -66,7 +66,7 @@ public class CalculatorTest {
         }
     }
 
-    public static class Subtract extends Operation {
+    public class Subtract extends Operation {
         protected Subtract(int number1, int number2) {
             super(number1, number2);
         }
@@ -77,7 +77,7 @@ public class CalculatorTest {
         }
     }
 
-    public static class Multiply extends Operation {
+    public class Multiply extends Operation {
         protected Multiply(int number1, int number2) {
             super(number1, number2);
         }
@@ -88,7 +88,7 @@ public class CalculatorTest {
         }
     }
 
-    public static class Divide extends Operation {
+    public class Divide extends Operation {
         protected Divide(int number1, int number2) {
             super(number1, number2);
         }
@@ -102,17 +102,16 @@ public class CalculatorTest {
         }
     }
 
-    private static int getNumber(Scanner sc) {
+    private int getNumber(Scanner sc) {
         System.out.println("Введите число: ");
         if (sc.hasNextInt()) {
             int number = sc.nextInt();
             System.out.println("Введенное число: " + number);
             return number;
-        }
-        else throw new IllegalArgumentException("Вы ввели не число, попробуйте снова");
+        } else throw new IllegalArgumentException("Вы ввели не число, попробуйте снова");
     }
 
-    public static char scanOperationType(Scanner sc) {
+    public char scanOperationType(Scanner sc) {
         System.out.println("Введите желаемую операцию в формате (+, -, *, /): ");
         String operationString = sc.next();
         if (!operationString.isEmpty()) {
@@ -129,4 +128,3 @@ public class CalculatorTest {
         } else throw new IllegalArgumentException("Вы не ввели операцию для выполнения");
     }
 }
-
